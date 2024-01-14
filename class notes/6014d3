@@ -1,0 +1,38 @@
+network layer IP address
+port number transport layer
+
+opening a socket needs: transport, host, service
+
+Transport Layer Options:
+
+  tcp - streaming protocol - send bytes could be indefinitely
+    reliable delivery
+    reliable order
+    congestion control
+    potentially slow
+    --need right answer and can wait longer
+
+  udp - datagram - send one packet at a time
+    unreliable
+    no congestion control
+    potentially fast
+    --for small data, or for getting most data as fast as possible
+
+web browsing
+  client-server organization
+
+for sending mail dont need fast response and want all of it to go in right order - TCP
+
+bit torrent
+  different protocol , peer to peer
+  tcp or udp
+  getting chunks of files anyways from lots of computers
+
+DNS
+  memphis.cs.utah into numerical address
+
+
+dig www.cs.utah.edu
+
+smtps
+simple mail transport protocol secure

@@ -1,0 +1,34 @@
+cs 6014 networking and security
+3 written assignments, 3 programing assignments , 1 presentation, mideterm exam march 15
+
+internet network of networks - interconnected ISPs
+
+http protocol
+
+
+network edge
+hosts: client and servers
+servers often in data centers
+
+access network
+communication links
+
+network core
+interconnected routers
+
+content provider networks
+take a webpage and replicate in various places so its closer to users
+must keep different copies in sync
+
+packet switching
+
+moved from circuit switching to packet switching
+mor economical
+
+
+layered internet protocol stack
+application:supporting network applications, http, imap, smtp, dns
+transport: process-process data transfer, tcp, udp
+network: routing of datagrams from source to destionation , ip, routing protocols
+link: data transfer between neighboring network elements , ethernet, wifi, ppp
+physical: bits

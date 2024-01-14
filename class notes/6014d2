@@ -1,0 +1,69 @@
+timing issues
+packets traveling between computers
+
+packet has to get from one end to the other
+speed of light
+distance over links
+network devices translation of signals to bytes
+dispatching time at each router
+
+4 types of delay
+PROPAGATION DELAY: how long it takes to go over the wires, fiber optics, or through the air
+TRANSMISSION DELAY: delay between bytes in machine and turning it into electrical signals over ethernet, at machine sending it out
+PROCESSING DELAY:
+QUEUEING DELAY: routers have multiple out and going packets, can cause a bottle neck, get a packet in and get it all in before can do something with it
+  , router puts it in a queue
+
+PROPAGATION DELAY:
+  time to travel along medium
+    depends on physics ,
+    distance travelled
+    speed of link- some fraction of the speed of light
+
+TRANSMISSION DELAY:
+  taking bytes, turning into medium format, light, electricity etc.
+  depends on device and data
+
+  device rate
+
+PROCESSING DELAY:
+  cpu of device looking at packet bytes deciding what to do with it
+  time to inspect bytes and choose next step
+  typically a few nanoseconds
+  router manufacture use good techniques
+
+QUEUING DELAY:
+  queue fills when incoming rate exceeds outgoing rate
+  sustained traffic intensity = packets get dropped
+
+time packets bytes are held in a queue, depends on traffic
+incoming data rate = average packet size x incoming packet rate
+  traffic intensity = incoming data rate /R
+
+what can we measure
+sending packets from one to another
+
+round trip time (rtt)
+need protocol that will bounce data back
+ICMP - internet control message protocol
+message sent is called a ping, server response is pong
+run as ping command
+
+can we get info about a route?
+TTL is "time to live"
+how many times to keep sending packet
+how many places to try
+
+traceroute uses this trick systematically in terminal
+  takes advantage that thin layer between tcp and ip
+  rely on pings being served quickly from all machines on the way
+
+latency vs throughput
+  latency : how long you have to wait for one small thing
+    in time ,seconds , RTT can help understand latency
+  throughput: how much you can send through , how long you have to wait for everything
+    mailing a box of flash drives can have very high throughput, but also high latency
+
+HW:
+work through calculations, and given metrics
+some programming to graph the data, script language to get output
