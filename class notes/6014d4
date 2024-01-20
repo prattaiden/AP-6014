@@ -1,0 +1,63 @@
+one machine many networks
+
+lo0 loop back device
+
+ifconfig
+
+network layers
+apilicaton
+  opening a socket needs transport host service
+
+
+headers added to front of data
+  first add port numbrer TCP header
+    to the left is IP header
+
+
+  if multiple apps talking to the socket and os
+
+
+
+  22 - well known port to contact a server
+  ports 1 through 1024 are usually privileged -
+
+  ephemeral port is usually picked by the OS
+
+  src port 1234
+
+UDP vs TCP sockets
+
+  UDP is connectionalles so only a local port number - no fixed destination messages go to
+    send a packet out as a result
+  TCP reliable connection, keeps thing in order
+
+UDP client
+5678 port number , bigger than 1024
+byte[] buffer = new byte[512]
+UDP socket in java - DatagramPacket pkt = new DatagramPacket(buffer, buffer.length);
+tell it a buffer
+
+HW2
+remap all the numbers for little endian
+high byte and low byte
+put into short
+0-15
+take first 2 bytes decode as a number
+first byte is high byte of id second is low byte of id
+
+recursion desired, ask other servers
+dig is saying RD is 1
+
+AD
+first 12 bytes are the header, 6 rows
+
+next is the question
+
+3 starts the question here
+3 is the length byte
+referring length and then the bytes
+
+use wireshark to look at whole packet
+shows it in finer pieces with highlighting it
+
+ByteBuffer - used to decode numbers like big endian short

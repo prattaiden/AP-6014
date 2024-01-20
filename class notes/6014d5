@@ -1,0 +1,49 @@
+reliable data transfer
+
+state machine is a collection of nodes or states
+  and a number of edges collecting those states, each edge has a condition
+    and an action
+
+state machines complete
+
+what if UDT is reliable
+  sending host:
+  wait for application mode
+  recieving host:
+  wait for packet mode
+
+what if pkt is corrupted
+  checksum
+      to deal with lots of numbers, just keep low bits of the sum
+        corruption could be bits getting flipped
+          if one bit gets flipped
+
+  sender side makes the packet with a check sum
+    receiver gets the packet and can check if it is corrupt
+      if it is corrupt, ask for the data again
+        that means the sender needs to be in two modes, wait for application or wait for application to ask again
+
+ack nack
+
+two modes
+  seond for 0 and 1 ,
+  send from the other mode meaning it isnt the mode that was inteded to recieve from
+
+for dropped package
+  !timeout
+    try sending again
+  if negative package or it times out
+
+
+RTT is minimum useful timeout
+
+Sequential Messages
+  throughput is limited by latency
+  send first packet
+    then go ahead and send next thing
+
+pipelining - send multiple things
+  pick how much to send at once before waiting for some response
+
+
+TCP uses cumulative acknowledgment
