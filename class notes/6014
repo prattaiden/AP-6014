@@ -1,0 +1,96 @@
+
+tcp timeout
+  based on estimate of round trip time
+
+flow control relies on rwnd and window<=rwnd
+
+congestion control uses cwnd and window<=cwnd
+
+SEGMENT part of package that is tcp header in the payload
+max segment size from tcp is max packet size minus ip header size
+  packet size in most devices 1500 bytes
+
+
+Additive increase, multiplicative decrease (AIMD)
+  sawtooth pattern
+
+1/26/24
+
+do with pointer name
+when recieve packet dns request
+array of bytes
+use two high bits to point to address somewehre else
+
+routing
+ip layer
+IPv4 address is 32 bits
+  4 giga bytes
+  155.98.0.0/16 IP prefix - insterad of writing 0 at end, 16 for number of bits for prefix
+
+IPv6 128 bits
+
+subnet
+  network small enough that every host sees every other
+
+DHCP
+  takes advantage of broadcast to configure a host
+
+routing
+bit ip packets
+
+
+1/29/24
+IPv4 packet format
+ipv4 packet 32 bits wide
+
+NAT network address translation
+change address and port number
+10. number local address
+
+docker - create new machine or host
+  machine is fake running in regular os
+
+
+1/31/24
+layers
+application - firefox, ping
+transport - tcp, udp
+network - ip
+link - wifi
+physical - electrons
+
+then security topics
+
+control plane, how rules rules get installed
+
+forwarding table
+flow table
+
+finding routes
+dijktras algorithm
+
+dx(y) is the shortest distance from x to y
+c(v,y) reports the distance from v to immediately connected y
+
+  dx(y) = minb {dx(v)+c(v,y)}
+
+define distance for y - take one step, define distance in that step
+
+Bellman-Form equation
+
+Time Complexity
+Dijkstra's - link state - global algorithm
+  for each of N nodes
+    visit each of N-1 other nodes
+      where picking each other node takes O(log N) time
+        O(N^2 log N)
+Bellmain-ford - distance vector
+  for each of N nodes
+    check tables of up to M adjacent nodes
+      where each table has N entries
+        and iterate up to N times
+        O(M N^3)
+  asynchronous
+
+
+hot potato routing

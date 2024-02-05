@@ -1,0 +1,14 @@
+dns system translates domain to ip address
+making dns cache server
+
+qr: bit 15(7): 0 if it is a query , 1 if it is a response
+opcode: bit 14-11(6543): indicates operation expected to be performed
+aa: bit 10(2)
+tc: bit 9(1)
+rd:bit 8(0)
+ra: bit 7
+z: bits 6-4 always zero
+Rcode: bit 3-0
+
+
+DNS:

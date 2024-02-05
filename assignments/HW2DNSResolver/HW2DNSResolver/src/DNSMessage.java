@@ -131,7 +131,9 @@ public class DNSMessage {
                 // Write the label length (1 byte)
                 dataOutputStream.writeByte(label.length()); //7 //3
                 // Write the label bytes
-                dataOutputStream.writeBytes(label); //example in hex //com
+//                byte[] labelBytes = label.getBytes(StandardCharsets.UTF_8);
+
+                dataOutputStream.writeBytes(label);
             }
             dataOutputStream.writeByte(0); //placing zero for termination
         }
@@ -147,10 +149,10 @@ public class DNSMessage {
         for(DNSQuestion question : questionsArray_){
             question.writeBytes(byteArrayOutputStream, domainLocation);
         }
-        answersArray_.get(0).writeBytes(byteArrayOutputStream, domainLocation);
-//       for(DNSRecord answerRecord : answersArray_){
-//           answerRecord.writeBytes(byteArrayOutputStream, domainLocation);
-//       }
+        //answersArray_.get(0).writeBytes(byteArrayOutputStream, domainLocation);
+       for(DNSRecord answerRecord : answersArray_){
+           answerRecord.writeBytes(byteArrayOutputStream, domainLocation);
+       }
         for(DNSRecord authorityRecord : authorityRecordsArray_){
             authorityRecord.writeBytes(byteArrayOutputStream, domainLocation);
         }
@@ -172,15 +174,20 @@ public class DNSMessage {
         // Create a new DNSMessage for the response
         DNSMessage response = new DNSMessage();
 
+        response.answersArray_ = answers; //answers in a google response
         // Build the header for the response
-        response.header_ = DNSHeader.buildHeaderForResponse(request);
+        response.header_ = DNSHeader.buildHeaderForResponse(request, response);
         // Set the number of questions, answers, authorities, and additional records
         response.questionsArray_ = request.getQuestionsArray();
-        response.answersArray_ = answers; //answers in a google response
         response.authorityRecordsArray_ = request.getAuthorityRecordsArray();
         response.additionalRecordsArray_ = request.getAdditionalRecordsArray();
 
+
         return response;
+    }
+
+    int getAnswerCount(){
+        return answersArray_.size();
     }
 
 }

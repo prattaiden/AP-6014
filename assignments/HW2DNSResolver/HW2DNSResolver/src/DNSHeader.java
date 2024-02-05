@@ -1,5 +1,6 @@
 import java.io.*;
 import java.lang.reflect.Field;
+import java.util.Objects;
 
 public class DNSHeader {
 
@@ -58,8 +59,6 @@ public class DNSHeader {
         this.arCount_ = 0;
     }
 
-    //read the header from an input stream (we'll use a ByteArrayInputStream but we will only use the
-// basic read methods of input stream to read 1 byte, or to fill in a byte array, so we'll be generic).
     public static DNSHeader decodeHeader(ByteArrayInputStream byteArrayInputStream) throws IOException {
         //Initialize header object
         DNSHeader header = new DNSHeader();
@@ -130,7 +129,7 @@ public class DNSHeader {
 
     //change qr to 1
    // create the header for the response. It will copy some fields from the request
-    public static DNSHeader buildHeaderForResponse(DNSMessage request) {
+    public static DNSHeader buildHeaderForResponse(DNSMessage request, DNSMessage response) {
         DNSHeader requestHeader = request.header_;
 
         // Create a new header using the request's header as a template
@@ -144,10 +143,24 @@ public class DNSHeader {
         // Set QR flag to indicate a response
         responseHeader.qr_ = 1;
 
-        // Set ANCOUNT to 1
-        responseHeader.anCount_ = 1;
+        if(response.getAnswerCount() > 0){
+            responseHeader.anCount_ = 1;
+        }
 
         return responseHeader;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DNSHeader dnsHeader = (DNSHeader) o;
+        return id_ == dnsHeader.id_ && qr_ == dnsHeader.qr_ && opCode_ == dnsHeader.opCode_ && aa_ == dnsHeader.aa_ && tc_ == dnsHeader.tc_ && rd_ == dnsHeader.rd_ && ra_ == dnsHeader.ra_ && z_ == dnsHeader.z_ && rCode_ == dnsHeader.rCode_ && qdCount_ == dnsHeader.qdCount_ && anCount_ == dnsHeader.anCount_ && nsCount_ == dnsHeader.nsCount_ && arCount_ == dnsHeader.arCount_ && Objects.equals(flags_, dnsHeader.flags_);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id_, flags_, qr_, opCode_, aa_, tc_, rd_, ra_, z_, rCode_, qdCount_, anCount_, nsCount_, arCount_);
     }
 
     //Return a human-readable string version of a header object.
