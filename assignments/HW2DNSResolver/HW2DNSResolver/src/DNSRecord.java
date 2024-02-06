@@ -44,7 +44,7 @@ public class DNSRecord {
 
         inputStream.mark(2);
 
-        int firstByte = dataInputStream.readShort();
+        int firstByte = dataInputStream.readUnsignedByte();
         if(compressed(firstByte)){
             int pointer = firstByte & (short) 0x3FFF;
             dnsRecord.name_ = dnsMessage.readDomainName(pointer);
@@ -54,6 +54,7 @@ public class DNSRecord {
             dnsRecord.name_ = dnsMessage.readDomainName(inputStream);
         }
 
+
        // dnsRecord.name_ = (dnsMessage.readDomainName(inputStream));
         dnsRecord.type_ = dataInputStream.readShort();
         dnsRecord.class_ = dataInputStream.readShort();
@@ -61,9 +62,8 @@ public class DNSRecord {
         dnsRecord.rdLength_ = dataInputStream.readShort();
 
         //reading the bytes from the length of rd length
-        dnsRecord.rdata_ = dataInputStream.readNBytes(dnsRecord.rdLength_);
-
-
+        dnsRecord.rdata_ = new byte[dnsRecord.rdLength_];
+        dataInputStream.readFully(dnsRecord.rdata_);
 
 
         return dnsRecord;

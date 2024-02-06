@@ -1,0 +1,4 @@
+send data from nodes using a broadcast channel
+design protocol:
+  send data from host S to hosts R1 and R2
+  
